@@ -62,6 +62,8 @@ its creation.
 - Deprecate the non-token standard `TransferCommand` template and corresponding validator endpoints so they can be removed
   in future versions. This also applies to the corresponding validator APIs `/v0/admin/external-party/transfer-preapproval/prepare-send`
   and `/v0/admin/external-party/transfer-preapproval/submit-send`.
+- Add new `LockedAmulet_ExpireAmuletV2` and `Amulet_Expire` choices that require `ExternalPartyConfigState` instead of `OpenMiningRound`.
+- Remove the existing `LockedAmulet_ExpireAmulet` and `Amulet_Expire` choices.
 
 ## Motivation
 
@@ -104,15 +106,10 @@ necessary tradeoff.
 `ExternalPartyConfigState` will have the round they were created in
 set to the round at the point in time when `ExternalPartyConfigState`
 was created. This can be up to 48h in the past at the time the
-transaction gets executed.
-
-The impact of this is that holding fees are also computed from that
-round up to 48h in the past or in other words coins expire up to 2
-days earlier after execution than they do at the moment. This means
-that coins worth less than 2 days of holding fees will be expired
-immediately after creation. Apart from that it has minor impact as CIP
-78 changed holding fees to not be charged on transfer so coins used
-before their expiration never get charged any holding fees.
+transaction gets executed. By switching expiry to be based on
+`ExternalPartyConfigState` we compensate for that by delaying expiry
+by the same amount so the effective expiry date of `Amulet` contracts
+is unchanged.
 
 ### Additional AmuletConfig Restrictions
 
