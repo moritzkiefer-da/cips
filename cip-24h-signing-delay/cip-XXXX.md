@@ -3,7 +3,7 @@
 <pre>
   CIP: CIP XXXX
   Layer: Daml
-  Title: 24h Submission Delay for CC Token Standard Implementation
+  Title: 24h Submission Delay for End-User CC Transactions
   Author: Simon Meier, Moritz Kiefer
   Status: Draft
   Type: Standards Track
@@ -13,9 +13,12 @@
 
 ## Abstract
 
-The initial Token Standard (CIP 56) implementation of Canton Coin included a limitation that only a 10 minute submission delay between preparing and executing
-was supported. This CIP lifts this limitation to support a 24h delay as targeted by CIP 56. In addition to the token standard implementation,
-the 24h submission delay will also be supported for traffic purchases and DevNet tap.
+This CIP supports a 24 submission delay between preparing and
+execution for all CC end-user transactions. Specifically this applies to all
+token standard operations making CC fully compliant with the token as
+well as the CC specific public actions of creating, renewing, and
+archiving preapprovals, purchasing traffic, and tapping funds on
+DevNet.
 
 ## Copyright
 
@@ -26,7 +29,7 @@ This CIP is licensed under CC0-1.0: [Creative Commons CC0 1.0 Universal](https:/
 ### High Level Summary
 
 The current 10 minute submission delay comes from the use of
-`OpenMiningRound` contracts. To support a 24h submission delay a new
+`OpenMiningRound`. To support a 24h submission delay a new
 `ExternalPartyConfigState` contract is introduced that is active for
 48h and copies the subset of information required for token standard
 operations from the latest `OpenMiningRound` contract at the time of
@@ -154,7 +157,7 @@ App providers that parse transaction history through the [token standard
 API](https://docs.sync.global/app_dev/token_standard/index.html#reading-and-parsing-transaction-history-involving-token-standard-contracts)
 no change is required.
 
-If you parse the CC specific choices directly you will need to adjust
+App providers that parse the CC specific choices directly will need to adjust
 your parser. In particular, `TransferPreapproval_SendV2` and the token
 standard implementation of transfers and allocations no longer
 exercise `AmuletRules_Transfer` internally and instead inline the
