@@ -41,16 +41,16 @@ its creation.
   `OpenMiningRound` contract at the time of creation. Each of these
   contracts is active for `2 * externalPartyConfigStateTickDuration` and a new one is created every `externalPartyConfigStateTickDuration`.
 - Change the token standard implementation of CC to rely on
-  `ExternalPartyConfigState` instead of `AmuletRules` and
+  `ExternalPartyAmuletRules` and `ExternalPartyConfigState` instead of `AmuletRules` and
   `OpenMiningRound`. At any given point the most recent
   `ExternalPartyConfigState` contract is still valid for at least
   `externalPartyConfigStateTickDuration`, i.e., 24h with the default
   configuration providing the desired submission delay. New `Amulet` contracts created from those choices will
   have the round they were created in set to the round from `ExternalPartyConfigState`.
 - Change the transfer implementation to create `FeaturedAppActivityMarker` contracts instead of directly creating `AppRewardCoupon`. This is required
-  as `AppRewardCoupon`s are tied to a round which would impose a shorter submission delay. This does not change the amount of rewards that can be minted.
+  as `AppRewardCoupon`s are tied to a round which would impose a shorter submission delay. This does not change the amount of rewards that can be minted. However it does imply that `extraFeaturedAppRewardAmount` can no longer be configured independently of `featuredAppActivityMarkerAmount`, which is a feature that was never made use of.
 - Enforce additional restriction on the `AmuletConfig`. These restrictions all hold already on DevNet, TestNet and MainNet so this is not changing the configuration.
-  - CC usage fees set to zero through 78 can no longer be set to non-zero values.
+  - CC usage fees, which were set to zero in CIP 78, can no longer be set to non-zero values.
   - `extraFeaturedAppRewardAmount` must be identical to `featuredAppActivityMarkerAmount`.
   - The `futureValues` field in the configuration schedule must be empty. The options for setting it were already removed
     in CIP 51. Now it is just enforced more directly.
@@ -65,7 +65,7 @@ its creation.
 
 ## Motivation
 
-Between preparing and executing a transaction, the registered key(s)
+Between preparing and executing a transaction, the key(s) registered in the topology state
 for the submitting external party must sign the transaction. This
 often requires explicit human approval sometimes even from multiple
 people. Doing that within a 10 minute window can be quite disruptive
@@ -83,7 +83,7 @@ submission delay.  This is what the new `ExternalPartyConfigState`
 contract accomplishes. 
 
 This does however imply that changes to the
-values stored on that contract propagate slower, more specifically it
+values stored on that contract propagate more slowly. More specifically it
 takes up to 48h until the old values cannot be used anymore.
 
 For `maxNumInputs`, `maxNumOutputs`, `maxNumLockHolders` this is a
@@ -136,11 +136,11 @@ be able to support a longer signing delay for reward minting.
 ### Token Standard APIs
 
 Changing the CC implementation of the token standard APIs to use
-`ExternalPartyConfigState` is an internal change.  Users of the token
+`ExternalPartyConfigState` is an implemenation-internal change.  Users of the token
 standard APIs do not need to make any change in their application.
 Note however, that the choice context returned by Canton Coin Scan
 will change. As applications should treat this opaquely and just pass
-it along this should still not require changes in applications.
+it along, this should still not require changes in applications.
 
 ### Locking APIs
 
@@ -153,7 +153,7 @@ schedule.
 
 ### Transaction History Parsing
 
-If you parse transaction history through the [token standard
+App providers that parse transaction history through the [token standard
 API](https://docs.sync.global/app_dev/token_standard/index.html#reading-and-parsing-transaction-history-involving-token-standard-contracts)
 no change is required.
 
