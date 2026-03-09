@@ -94,3 +94,10 @@ Global Synchronizer CIPs
 | [cip-0097](/cip-0097/cip-0097.md) |  | Nasdaq Super Validator Participation | Eric Saraniecki | Governance | Approved |
 | [cip-0098](/cip-0098/cip-0098.md) |  | Cap Per-Transaction Application Rewards at $1.50 | Eric Saraniecki | Tokenomics | Approved |
 | [cip-0099](/cip-0099/cip-0099.md) |  | Zero Hash Modifications to Adoption Incentive  | Eric Saraniecki | Governance | Approved |
+| [cip-0100](/cip-0100/cip-0100.md) |  | Governance of the CIP-0082 Development Fund  | Bernhard Elsner | Governance | Approved |
+| [cip-0102](/cip-0102/cip-0102.md) |  | Add Tharimmune as a SV of weight 4  | Mark Wendland  | Governance | Approved |
+| [cip-0103](/cip-0103/cip-0103.md) |  | dApp Standard| Marc Juchli, Alexey Chyker, Eugene Birski| Standards Track | Approved |
+| [cip-0104](/cip-0104/cip-0104.md) |  | Traffic-Based App Rewards | Simon Meier | Tokenomics | Approved|
+| [cip-0105](/cip-0105/cip-0105.md) |  |Super Validator (SV) Locking & Long-Term Commitment Framework | Eric Saraniecki w/ Community Proposal| Tokenomics | Approved |
+| [cip-0106](/cip-0106/cip-0106.md) |  |Add QCP Group as a Super Validator (weight 5.0) | Yiannis Varelas, Eric Saraniecki | Governance | Proposed |
+| [cip-0107](/cip-0107/cip-0107.md) |  |24h Submission Delay for End-User CC Transactions | Simon Meier, Moritz Kiefer | Standards Track | Proposed |
