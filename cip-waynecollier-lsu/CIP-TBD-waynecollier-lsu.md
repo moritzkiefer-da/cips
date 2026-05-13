@@ -66,9 +66,9 @@ Daml Model Votes
 
 [Daml models from 0.6.2](https://docs.dev.sync.global/release_notes.html) become effective on **2026-05-19**
 
-Practice LSU: **2026-05-27**
+**Practice** Logical Synchronizer Upgrade Date: **2026-05-27**
 
-Splice version: 0.6.5 
+Minimum Allowed Splice version: 0.6.4 
 
 * Set topologyFreezeTime to 2026-05-26T13:00:00Z  
 * Set upgradeTime to 2026-05-27T13:00:00Z  
@@ -77,9 +77,9 @@ Splice version: 0.6.5
 
 Then, at the scheduled topology freeze time, the automated LSU procedure begins.
 
-Official LSU: **2026-06-03**
+Logical Synchronizer Upgrade Date: **2026-06-03**
 
-Splice version: 0.6.5 
+Minimum Allowed Splice version: 0.6.4 
 
 * Set topologyFreezeTime to 2026-06-02T13:00:00Z  
 * Set upgradeTime to 2026-06-03T13:00:00Z  
@@ -92,7 +92,9 @@ Then, at the scheduled topology freeze time, the automated LSU procedure begins.
 
 [Daml models from 0.6.2](https://docs.dev.sync.global/release_notes.html) become effective on **2026-05-26**
 
-LSU: **2026-06-10**
+Logical Synchronizer Upgrade Date: **2026-06-10**
+
+Minimum Allowed Splice version: 0.6.4 
 
 * Set topologyFreezeTime to 2026-06-09T13:00:00Z  
 * Set upgradeTime to 2026-06-10T13:00:00Z  
@@ -105,7 +107,9 @@ Then, at the scheduled topology freeze time, the automated LSU procedure begins.
 
 [Daml models from 0.6.2](https://docs.dev.sync.global/release_notes.html) become effective on **2026-06-02**
 
-LSU: **2026-06-17**
+Logical Synchronizer Upgrade Date: **2026-06-17**
+
+Minimum Allowed Splice version: 0.6.4
 
 * Set topologyFreezeTime to 2026-06-16T13:00:00Z  
 * Set upgradeTime to 2026-06-17T13:00:00Z  
