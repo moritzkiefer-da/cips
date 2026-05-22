@@ -2,7 +2,7 @@
 
 <pre>
   CIP: ?
-  Title: Free TransferPreapproval Base Duration
+  Title: Free Canton Coin Transfer-Preapproval Base Duration
   Author: Moritz Kiefer, Simon Meier
   Status: Draft
   Type: Tokenomics
@@ -12,12 +12,12 @@
 
 ## Abstract
 
-CIP 096 removed validator liveness rewards. This introduced a
+[CIP-0096](https://github.com/canton-foundation/cips/blob/main/cip-0096/cip-0096.md) removed validator liveness rewards. This introduced a
 bootstrapping problem: Most exchanges only support sending Canton Coin
 to parties that have preapprovals enabled. But enabling preapprovals
-requires paying the CC fee for their expiry duration. To mitigate
-this, this CIP introduces a free base duration for a preapproval
-(defaulting to 90 days). This allows creating and renewing a
+requires paying a CC fee for their expiry duration.
+This CIP solves this bootstrapping problem by introducing a free base duration for preapprovals
+(defaulting to 90 days), which allows creating and renewing a
 preapproval using just traffic costs including using the free base traffic rate.
 
 ## Copyright
@@ -45,7 +45,7 @@ periodically.
 
 The fees were originally added to guard against overloading the
 Supervalidator nodes with very long-lived transfer preapprovals. This
-problem still exists so we cannot fully remove the fees. However, for
+problem still exists, which is why we cannot fully remove the fees. However, for
 preapprovals with a lifetime of <= 90 days traffic costs provide
 sufficient protection and allow us to not charge additional CC fees.
 
@@ -56,8 +56,8 @@ config field is not set explicitly (meaning the default of 90 days is
 used), this change allows downgrades of all Daml contracts and is fully
 backwards compatible.
 
-Validators that do not upgrade to a version that includes the new Daml
-code will still be charged fees.
+Validator nodes will continue to pay transfer preapproval fees for the whole duration until they upgrade to a version that includes the new Daml
+code.
 
 ## Reference implementation
 
